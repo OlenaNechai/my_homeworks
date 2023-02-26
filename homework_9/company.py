@@ -35,7 +35,10 @@ class Company:
 
     @total_employees.setter
     def total_employees(self, new_total: int):
-        self.__total_employees = new_total
+        if isinstance(new_total, int) and new_total > 0:
+            self.__total_employees = new_total
+        else:
+            raise TypeError
 
     @property
     def products(self):
@@ -81,4 +84,5 @@ if __name__ == '__main__':
     result = apple.compare_by_revenue()
     apple.products = 'Mac'
     apple.services = 'Apple TV'
+    apple.total_employees = 100000
 
